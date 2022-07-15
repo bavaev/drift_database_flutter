@@ -71,7 +71,6 @@ class _ListUsersState extends State<ListUsers> {
       iOptions: _getIOSOptions(),
       aOptions: _getAndroidOptions(),
     );
-    print(keys);
     setState(() => keys);
   }
 
@@ -136,7 +135,6 @@ class _ListUsersState extends State<ListUsers> {
                   id: users.data![index].id.toString(),
                   card: keys['${users.data![index].id.toString()}_user_card_key'] ?? '',
                 );
-                print(users.data![index].id);
                 return Container(
                   margin: const EdgeInsets.symmetric(
                     vertical: 10,

@@ -7,9 +7,9 @@ import 'package:flutter/services.dart';
 
 class EditUser extends StatefulWidget {
   static const routeName = '/edit';
-  EditUser({Key? key, required this.user, this.secure}) : super(key: key);
-  User user;
-  SecureData? secure;
+  const EditUser({Key? key, required this.user, this.secure}) : super(key: key);
+  final User user;
+  final SecureData? secure;
 
   @override
   State<EditUser> createState() => _EditUserState();
