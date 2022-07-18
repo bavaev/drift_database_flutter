@@ -213,12 +213,11 @@ class _ListUsersState extends State<ListUsers> {
         onPressed: () => showModalBottomSheet(
           context: context,
           builder: (BuildContext context) {
-            return Container(
-              margin: const EdgeInsets.all(10),
-              child: Padding(
-                padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-                child: SafeArea(
-                  child: SingleChildScrollView(
+            return SizedBox(
+              child: SafeArea(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
                     child: Column(
                       children: [
                         const Text(
