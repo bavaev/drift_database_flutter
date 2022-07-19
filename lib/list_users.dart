@@ -19,7 +19,7 @@ class ListUsers extends StatefulWidget {
 }
 
 class _ListUsersState extends State<ListUsers> {
-  Database? _database;
+  late Database _database;
   FlutterSecureStorage? storage;
   Map<String, String> keys = {};
 
@@ -75,7 +75,7 @@ class _ListUsersState extends State<ListUsers> {
   }
 
   void insertUser(User user, SecureData secure) async {
-    await _database!.insertUser(user);
+    await _database.insertUser(user);
     storage!.write(
       key: '${user.id}_user_card_key',
       value: secure.card,
@@ -92,7 +92,7 @@ class _ListUsersState extends State<ListUsers> {
   }
 
   void updateUser(User user, SecureData? secure) async {
-    await _database!.updateUser(user);
+    await _database.updateUser(user);
     if (secure != null) {
       storage!.write(
         key: '${user.id}_user_card_key',
@@ -104,7 +104,7 @@ class _ListUsersState extends State<ListUsers> {
   }
 
   void removeUser(User user) async {
-    await _database!.removeUser(user);
+    await _database.removeUser(user);
     storage?.delete(
       key: '${user.id}_user_card_key',
       aOptions: _getAndroidOptions(),
@@ -115,7 +115,7 @@ class _ListUsersState extends State<ListUsers> {
   @override
   void dispose() {
     super.dispose();
-    _database!.close();
+    _database.close();
   }
 
   @override
@@ -125,7 +125,7 @@ class _ListUsersState extends State<ListUsers> {
         title: const Text('List Users'),
       ),
       body: StreamBuilder<List<User>>(
-        stream: _database!.usersStream,
+        stream: _database.usersStream,
         builder: (context, users) {
           if (users.hasData) {
             return ListView.builder(
